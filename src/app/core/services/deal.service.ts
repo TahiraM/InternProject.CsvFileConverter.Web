@@ -22,4 +22,10 @@ export class DealService {
 
     return this.http.get<Deal>(url);
   }
+
+  saveDealDetails(data): Observable<Deal> {
+    const url = `${this.baseUrl}/v1/Deals/`;
+
+    return this.http.post<Deal>(url, data);
+  }
 }
