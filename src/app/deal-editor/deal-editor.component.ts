@@ -1,7 +1,7 @@
-import { FormBuilder } from '@angular/forms';
-import { Component, OnInit, createPlatformFactory } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
 import { Deal, DealService } from '../core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-deal-editor',
@@ -9,10 +9,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./deal-editor.component.css']
 })
 export class DealEditorComponent implements OnInit {
+  form: FormGroup;
   deal: Deal;
-  customForm: any;
 
-  constructor(private dealService: DealService, private route: ActivatedRoute, private fb: FormBuilder) {
+  constructor(
+    private dealService: DealService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private fb: FormBuilder) {
     this.createForm();
   }
 
@@ -22,35 +26,38 @@ export class DealEditorComponent implements OnInit {
         const dealId = param['dealId'];
         if (dealId) {
           this.dealService.getDealsDetails(dealId)
-            .subscribe((deal: Deal) => this.deal = deal);
+            .subscribe((deal: Deal) => {
+              this.deal = deal;
+              this.setValues();
+            });
         }
       });
   }
 
   createForm() {
-      this.customForm = this.fb.group({
-      v3DealId: [null],
-      dealName: [null],
-      eFrontDealId: [null],
-      v3CompanyId: [null],
-      v3CompanyName: [null],
-      sectorId: [null],
-      sector: [null],
-      countryId: [null],
-      country: [null],
-      transactionTypeId: [null],
-      transactionType: [null],
-      transactionFees: [null],
-      otherFees: [null],
-      currency: [null],
-      activeInActive: [null],
-      exitDate: [null]
+      this.form = this.fb.group({
+      v3DealId: new FormControl(''),
+      dealName: new FormControl(''),
+      eFrontDealId: new FormControl(''),
+      v3CompanyId: new FormControl(''),
+      v3CompanyName: new FormControl(''),
+      sectorId: new FormControl(''),
+      sector: new FormControl(''),
+      countryId: new FormControl(''),
+      country: new FormControl(''),
+      transactionTypeId: new FormControl(''),
+      transactionType: new FormControl(''),
+      transactionFees: new FormControl(''),
+      otherFees: new FormControl(''),
+      currency: new FormControl(''),
+      activeInActive: new FormControl(''),
+      exitDate: new FormControl(''),
     });
   }
 
   setValues() {
     if (this.deal) {
-        this.customForm.reset({
+        this.form.reset({
         v3DealId: this.deal.v3DealId,
         dealName: this.deal.dealName,
         eFrontDealId: this.deal.eFrontDealId,
@@ -72,7 +79,11 @@ export class DealEditorComponent implements OnInit {
   }
 
   onSubmit() {
-    const dataToSave = Object.assign({}, this.deal, this.customForm.value);
-    this.dealService.saveDealDetails(dataToSave);
+    const dataToSave = Object.assign({}, this.deal);
+
+    this.dealService.saveDealDetails(dataToSave)
+      .subscribe(m => {
+        this.router.navigate(['/deals']);
+      });
   }
 }

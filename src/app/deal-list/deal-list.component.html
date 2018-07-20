@@ -33,6 +33,7 @@
                 <td>{{deal.currency }}</td>
                 <td>{{deal.activeInActive }}</td>
                 <td>{{deal.exitDate }}</td>
+                <td><button><a [routerLink]="['/dealDelete/', deal.v3DealId]">Delete</a></button></td>
             </tr>
         </tbody>
     </table>

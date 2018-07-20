@@ -1,3 +1,4 @@
+import { DealDeleteComponent } from './deal-delete/deal-delete.component';
 import { Routes, RouterModule } from '@angular/router';
 import { DealListComponent } from './deal-list/deal-list.component';
 import { DealDetailsComponent } from './deal-details/deal-details.component';
@@ -9,6 +10,7 @@ export const routes: Routes = [
   { path: 'deals', component: DealListComponent },
   { path: 'deals/:dealId', component: DealDetailsComponent },
   { path: 'dealEdit/:dealId', component: DealEditorComponent },
+  { path: 'dealDelete/:dealId', component: DealDeleteComponent },
 ];
 
 @NgModule({

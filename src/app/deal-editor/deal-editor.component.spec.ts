@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DealEditorComponent } from './deal-editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterTestingModule } from '@angular/router/testing';
+import { CommonModule } from '@angular/common';
 describe('DealEditorComponent', () => {
   let component: DealEditorComponent;
   let fixture: ComponentFixture<DealEditorComponent>;
@@ -10,10 +10,9 @@ describe('DealEditorComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DealEditorComponent ],
-      imports: [
-        RouterTestingModule,
-        FormsModule,
-        ReactiveFormsModule],
+      imports: [ CommonModule,
+                 FormsModule,
+                 ReactiveFormsModule],
     })
     .compileComponents();
   }));

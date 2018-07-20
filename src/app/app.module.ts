@@ -8,10 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { DealDetailsComponent } from './deal-details/deal-details.component';
 import { AppRoutingModule } from './app-routes.modules';
 import { DealEditorComponent } from './deal-editor/deal-editor.component';
+import { DealDeleteComponent } from './deal-delete/deal-delete.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DealListComponent, DealDetailsComponent, DealEditorComponent],
+  declarations: [AppComponent, DealListComponent, DealDetailsComponent, DealEditorComponent, DealDeleteComponent],
   imports: [BrowserModule, HttpModule, HttpClientModule, AppRoutingModule, FormsModule,
     AppRoutingModule,
     HttpClientModule ],
