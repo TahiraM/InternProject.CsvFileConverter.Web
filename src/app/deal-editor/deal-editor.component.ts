@@ -1,4 +1,4 @@
-import { FormBuilder, ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormsModule, FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit, Input } from '@angular/core';
 import { Deal, DealService } from '../core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,8 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./deal-editor.component.css']
 })
 export class DealEditorComponent implements OnInit {
-  form: FormGroup;
   deal: Deal;
+  public form: FormGroup;
 
   constructor(
     private dealService: DealService,
@@ -30,6 +30,11 @@ export class DealEditorComponent implements OnInit {
               this.deal = deal;
               this.setValues();
             });
+        }
+
+        if (!dealId) {
+          this.setValues();
+          this.createForm();
         }
       });
   }
@@ -76,6 +81,10 @@ export class DealEditorComponent implements OnInit {
         exitDate: this.deal.exitDate
       });
     }
+  }
+
+  newDeal() {
+    this.createForm();
   }
 
   onSubmit() {
