@@ -1,8 +1,11 @@
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DealEditorComponent } from './deal-editor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+
 describe('DealEditorComponent', () => {
   let component: DealEditorComponent;
   let fixture: ComponentFixture<DealEditorComponent>;
@@ -12,7 +15,9 @@ describe('DealEditorComponent', () => {
       declarations: [ DealEditorComponent ],
       imports: [ CommonModule,
                  FormsModule,
-                 ReactiveFormsModule],
+                 ReactiveFormsModule,
+                 HttpClientModule,
+                 RouterTestingModule],
     })
     .compileComponents();
   }));
