@@ -26,4 +26,11 @@ describe('DealListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('should render title in a span tag', async(() => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('span').textContent).toContain('Deals');
+  }));
 });
