@@ -18,10 +18,12 @@ export class DealDeleteComponent implements OnInit {
     this.route.params
       .subscribe(param => {
         const dealId = param['dealId'];
+        if (dealId){
           this.dealService.deleteDeal(dealId)
             .subscribe(m => {
               this.router.navigate(['/deals']);
             });
+          }
       });
   }
 }

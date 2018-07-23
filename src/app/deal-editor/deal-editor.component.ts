@@ -31,32 +31,35 @@ export class DealEditorComponent implements OnInit {
               this.setValues();
             });
         }
-
-        if (!dealId) {
-          this.setValues();
-          this.createForm();
+        if (dealId === '') {
+          this.dealService.getDealsDetails(dealId)
+            .subscribe((deal: Deal) => {
+              this.deal = deal;
+              this.createForm();
+              this.setValues();
+            });
         }
       });
   }
 
   createForm() {
       this.form = this.fb.group({
-      v3DealId: new FormControl(''),
-      dealName: new FormControl(''),
-      eFrontDealId: new FormControl(''),
-      v3CompanyId: new FormControl(''),
-      v3CompanyName: new FormControl(''),
-      sectorId: new FormControl(''),
-      sector: new FormControl(''),
-      countryId: new FormControl(''),
-      country: new FormControl(''),
-      transactionTypeId: new FormControl(''),
-      transactionType: new FormControl(''),
-      transactionFees: new FormControl(''),
-      otherFees: new FormControl(''),
-      currency: new FormControl(''),
-      activeInActive: new FormControl(''),
-      exitDate: new FormControl(''),
+      v3DealId: [''],
+      dealName: [''],
+      eFrontDealId: [''],
+      v3CompanyId: [''],
+      v3CompanyName: [''],
+      sectorId: [''],
+      sector: [''],
+      countryId: [''],
+      country: [''],
+      transactionTypeId: [''],
+      transactionType: [''],
+      transactionFees: [''],
+      otherFees: [''],
+      currency: [''],
+      activeInActive: [''],
+      exitDate: [''],
     });
   }
 
@@ -88,7 +91,7 @@ export class DealEditorComponent implements OnInit {
   }
 
   onSubmit() {
-    const dataToSave = Object.assign({}, this.deal);
+    const dataToSave = Object.assign({}, this.deal, this.form.value);
 
     this.dealService.saveDealDetails(dataToSave)
       .subscribe(m => {
