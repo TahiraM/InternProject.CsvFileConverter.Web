@@ -1,0 +1,100 @@
+<h2>Detail for Deal {{deal?.dealName}}</h2>
+<button type="button" class="btn btn-primary btn-sm" [disabled]="form.invalid" (click)="onSubmit()">Save</button>
+<div class="row" *ngIf="deal">
+  <div class="col-md-6 col-sm-12">
+      <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-body">
+
+          <div class="form-group">
+              <label for="dealId"><b>Deal ID</b></label>
+              <input type="text" formControlName="v3DealId" name="v3DealId"
+            class="form-control" placeholder="v3DealId" form="form" >
+            </div>
+
+        <div class="form-group">
+            <label for="dealName"><b>Deal Name</b></label>
+            <input type="text" formControlName="dealName" name="dealName"
+              class="form-control" placeholder="dealName" form="form" >
+          </div>
+
+        <div class="form-group">
+          <label for="companyId"><b>Company ID</b></label>
+          <input type="text" formControlName="v3CompanyId" name="companyId"
+            class="form-control" placeholder="companyId" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="eFrontDealId"><b>EFront Deal ID</b></label>
+          <input type="text" formControlName="eFrontDealId" name="eFrontDealId"
+            class="form-control" placeholder="eFrontDealId" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="v3CompanyName"><b>Company Name</b></label>
+          <input type="text" formControlName="v3CompanyName" name="v3CompanyName"
+            class="form-control" placeholder="v3CompanyName" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="sectorId"><b>Sector ID</b></label>
+          <input type="text" formControlName="sectorId" name="sectorId"
+            class="form-control" placeholder="sectorId" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="sector"><b>Sector</b></label>
+          <input type="text" formControlName="sector" name="sector"
+            class="form-control" placeholder="" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="countryId"><b>Country ID</b></label>
+          <input type="text" formControlName="countryId" name="countryId"
+            class="form-control" placeholder="sector" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="country"><b>Country</b></label>
+          <input type="text" formControlName="country" name="country"
+            class="form-control" placeholder="country" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="transactionTypeId"><b>Transaction Type ID</b></label>
+          <input type="text" formControlName="transactionTypeId" name="transactionTypeId"
+            class="form-control" placeholder="transactionTypeId" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="transactionType"><b>Transaction Type</b></label>
+          <input type="text" formControlName="transactionType" name="transactionType"
+            class="form-control" placeholder="transactionType" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="transactionFees"><b>Transaction Fees</b></label>
+          <input type="text" formControlName="transactionFees" name="transactionFees"
+            class="form-control" placeholder="transactionFees" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="otherFees"><b>Other Fees</b></label>
+          <input type="text" formControlName="otherFees" name="otherFees"
+            class="form-control" placeholder="otherFees" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="activeInActive"><b>Active</b></label>
+          <input type="text" formControlName="activeInActive" name="activeInActive"
+            class="form-control" placeholder="activeInActive" form="form" >
+        </div>
+
+        <div class="form-group">
+          <label for="exitDate"><b>Exit Date</b></label>
+          <input type="text" formControlName="exitDate" name="exitDate"
+            class="form-control" placeholder="exitDate" form="form" >
+        </div>
+</div>
+    </form>
+  </div>
+<div>
