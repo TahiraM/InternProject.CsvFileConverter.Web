@@ -10,6 +10,7 @@ export const routes: Routes = [
   { path: 'deals', component: DealListComponent },
   { path: 'deals/:dealId', component: DealDetailsComponent },
   { path: 'dealEdit/:dealId', component: DealEditorComponent },
+  { path: 'dealEdit', component: DealEditorComponent },
   { path: 'dealDelete/:dealId', component: DealDeleteComponent },
 ];
 

@@ -2,7 +2,7 @@
     <!-- <i class="fa fa-handshake-o" aria-hidden="true"></i> -->
     <span>Deals</span>
 </div>
-<button id="newDealB"><a [routerLink]="['/dealEdit/', '']">NewDeal</a></button>
+<button id="newDealB"><a [routerLink]="['/dealEdit']">NewDeal</a></button>
 <div>
     <table class="table table-striped table-sm small" id ="dealsTable">
         <thead>
@@ -22,7 +22,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let deal of deals">
-                <td><a [routerLink]="['/deals', deal.v3DealId]">{{deal.dealName}}</a></td>
+                <td><a id="link" [routerLink]="['/deals', deal.v3DealId]">{{deal.dealName}}</a></td>
                 <td>{{deal.v3CompanyName}}</td>
                 <td>{{deal.eFrontDealId }}</td>
                 <td>{{deal.sector }}</td>
@@ -33,7 +33,7 @@
                 <td>{{deal.currency }}</td>
                 <td>{{deal.activeInActive }}</td>
                 <td>{{deal.exitDate }}</td>
-                <td><button><a [routerLink]="['/dealDelete/', deal.v3DealId]">Delete</a></button></td>
+                <td><button><a [routerLink]="['/dealDelete/', deal.v3DealId]" id="deleteButton">Delete</a></button></td>
             </tr>
         </tbody>
     </table>

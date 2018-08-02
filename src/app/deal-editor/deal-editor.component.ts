@@ -31,8 +31,9 @@ export class DealEditorComponent implements OnInit {
               this.setValues();
             });
         }
-        if (dealId === '') {
-          this.dealService.getDealsDetails(dealId)
+        if (!dealId) {
+          const Id = '';
+          this.dealService.getDealsDetails(Id)
             .subscribe((deal: Deal) => {
               this.deal = deal;
               this.createForm();

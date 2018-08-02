@@ -1,8 +1,8 @@
 <h2>Detail for Deal {{deal?.dealName}}</h2>
 
 <div *ngIf="deal">
-<button><a [routerLink]="['/dealEdit/', deal.v3DealId]">Edit</a></button>
-<button><a [routerLink]="['/dealDelete/', deal.v3DealId]">Delete</a></button>
+<button id = "edit"><a [routerLink]="['/dealEdit/', deal.v3DealId]">Edit</a></button>
+<button id = "delete"><a [routerLink]="['/dealDelete/', deal.v3DealId]">Delete</a></button>
 <div class="row">
   <div class="col-md-6 col-sm-12">
     <form class="form" *ngIf="deal">
