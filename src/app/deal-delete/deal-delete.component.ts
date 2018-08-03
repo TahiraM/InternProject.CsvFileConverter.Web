@@ -10,9 +10,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class DealDeleteComponent implements OnInit {
   deal: Deal;
-  private router: Router;
 
-  constructor(private dealService: DealService, private route: ActivatedRoute) { }
+  constructor(private dealService: DealService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params
