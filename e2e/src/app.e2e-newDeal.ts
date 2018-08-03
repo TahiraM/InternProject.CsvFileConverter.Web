@@ -11,20 +11,20 @@ describe('workspace-project App', () =>  {
   describe('New deal ', function() {
     it('should go to create a new deal page', async function () {
       // Given
-      await browser.get('http://localhost:4200');
+      await browser.get(browser.baseUrl);
 
       // When
       const newDeal = element(by.css('#newDealB'));
 
       // Then
       await newDeal.click().then(function () {
-        expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/dealEdit');
+        expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + '/dealEdit');
       });
     });
 
     it('should have 14 edit boxes that are editable', async function() {
         // Given
-        await browser.get('http://localhost:4200/dealEdit');
+        await browser.get(browser.baseUrl + '/dealEdit');
         await element.all(by.css('#saveButton')).isDisplayed();
 
         // When
@@ -39,7 +39,7 @@ describe('workspace-project App', () =>  {
 
     it('should Deal Id not be editable', async function() {
         // Given
-        await browser.get('http://localhost:4200/dealEdit');
+        await browser.get(browser.baseUrl + '/dealEdit');
         await element.all(by.css('#saveButton')).isDisplayed();
 
         // When
@@ -50,9 +50,9 @@ describe('workspace-project App', () =>  {
         expect(input.getAttribute('value')).not.toContain('abcdefg');
     });
 
-    it ('should save a new deal ', async function() {
+    fit ('should save a new deal ', async function() {
         // Given
-        await browser.get('http://localhost:4200/dealEdit');
+        await browser.get(browser.baseUrl + '/dealEdit');
         await element.all(by.css('#saveButton')).isDisplayed();
         const save = element(by.css('#saveButton'));
 
@@ -74,10 +74,12 @@ describe('workspace-project App', () =>  {
 
     });
 
-    it('should delete a deal ', async function() {
+    fit('should delete a deal ', async function() {
         // Given
-        await browser.get('http://localhost:4200');
+        await browser.get(browser.baseUrl);
+        // const name = element.all(by.css('#link')).getText();
         const link = element.all(by.css('#link')).get(4);
+        const name = link.getText();
         link.click();
         const deleteButton = element(by.css('#delete'));
 
@@ -90,6 +92,7 @@ describe('workspace-project App', () =>  {
         // Then
         expect(table ).toBeTruthy();
         expect(elements.count()).toEqual(5);
+        expect(name.isPending).not.toBeTruthy();
       });
 
   });

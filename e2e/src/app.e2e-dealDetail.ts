@@ -11,7 +11,7 @@ describe('workspace-project App', () => {
   describe('Deal Details ', function() {
     it('should have 14 edit boxes that are readonly', async function() {
       // Given
-      await browser.get('http://localhost:4200/deals/02B4EFAD4432');
+      await browser.get(browser.baseUrl + '/deals/02B4EFAD4432');
 
       // When
       const elements = element.all(by.css('.form-control'));
@@ -25,7 +25,7 @@ describe('workspace-project App', () => {
 
     it('Should display a delete and edit button ', async function() {
       // Given
-      await browser.get('http://localhost:4200/deals/02B4EFAD4432');
+      await browser.get(browser.baseUrl + '/deals/02B4EFAD4432');
 
       // When
       const deleteButton = element(by.css('#delete')).isEnabled();

@@ -11,7 +11,7 @@ describe('workspace-project App', () => {
   describe('Main Page', function() {
     it('should display table containing list of deals', async function() {
       // Given
-      await browser.get('http://localhost:4200');
+      await browser.get(browser.baseUrl);
 
       // When
       const dealsTable = element(by.css('#dealsTable')).isDisplayed();
@@ -24,7 +24,7 @@ describe('workspace-project App', () => {
 
      it('should have 5 rows of deals showing', async function() {
       // Given
-      await browser.get('http://localhost:4200');
+      await browser.get(browser.baseUrl);
       await element(by.css('#deleteButton')).isEnabled();
 
       // When
@@ -36,7 +36,7 @@ describe('workspace-project App', () => {
 
      it('should have 11 columns of deal entities showing', async function() {
       // Given
-      await browser.get('http://localhost:4200');
+      await browser.get(browser.baseUrl);
       await element(by.css('#deleteButton')).isEnabled();
 
       // When
@@ -48,26 +48,27 @@ describe('workspace-project App', () => {
 
      it('should go into a particular deals details', async function() {
       // Given
-      await browser.get('http://localhost:4200');
+      await browser.get(browser.baseUrl);
 
       // When
       const elements = element.all(by.css('#link')).get(0);
 
       // Then
       elements.click().then(function() {
-      expect(browser.getCurrentUrl()).toEqual('http://localhost:4200/deals/02B4EFAD4432');
+      expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + '/deals/02B4EFAD4432');
       });
     });
 
-    it('Should be able to delete a deal', async function() {
+    fit('Should be able to delete a deal', async function() {
        // Given
-       await browser.get('http://localhost:4200/dealEdit');
+       await browser.get(browser.baseUrl + '/dealEdit');
        await element.all(by.css('#saveButton')).isDisplayed();
        const save = element(by.css('#saveButton'));
        await element.all(by.css('.form-control')).get(1).sendKeys('HelloDelete');
        await element.all(by.css('.form-control')).get(4).sendKeys('Hello');
        await element.all(by.css('.form-control')).get(5).sendKeys('2');
        await element.all(by.css('.form-control')).get(14).sendKeys('2003-03-03T00:00:00');
+       const name = element.all(by.css('#link')).getCssValue('a HelloDelete');
        save.click();
 
        // When
@@ -76,8 +77,10 @@ describe('workspace-project App', () => {
        deleteButton.click();
 
        // Then
+       expect(browser.getCurrentUrl()).toEqual(browser.baseUrl + '/deals');
        const elements = element.all(by.css('#dealsTable tr'));
        expect(elements.count()).toEqual(5);
+       expect(name.isPending).not.toBeTruthy();
 
     });
   });
